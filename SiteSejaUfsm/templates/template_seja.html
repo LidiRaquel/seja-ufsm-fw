@@ -1,0 +1,116 @@
+{%load staticfiles%}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title> Seja UFSM</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'b/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'b/vendor/bootstrap/font-awesome/css/font-awesome.min.css'%}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'b/css/agency.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="{% url 'index'%}">Seja UFSM-FW</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ml-auto">
+           <li class="nav-item dropdown">
+              <a class="nav-link  dropdown-toggle"   data-toggle="dropdown"  href="{% url 'index'%}">Cursos</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                  {%for cursos in cursos %}
+                    <a class="dropdown-item" href="{%url 'DetalheCursos' id=cursos.id %}">{{cursos.Nome}}</a>
+                    {%endfor%}
+                  </div>
+              </li>
+              <li class="nav-item dropdown">
+              <a class="nav-link  dropdown-toggle"   data-toggle="dropdown"  href="{% url 'index'%}">Utilidades</a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'alimentacao' %}">Alimentação</a>
+                    <a class="dropdown-item" href="{% url 'hospedagem' %}">Hospedagem</a>
+                    <a class="dropdown-item" href="{% url 'moradia' %}">Moradia</a>
+                    <a class="dropdown-item" href="{% url 'contatos' %}">Contatos Úteis</a>
+                    <a class="dropdown-item" href="{% url 'horario' %}">Horários de Ônibus</a>
+                    <a class="dropdown-item" href="{% url 'assistencia'%}">Assistência Estudantil</a>
+                  </div>
+              </li>
+            <li class="nav-item">
+             <a class="nav-link" href="{% url 'edital'%}">Editais/Arquivos</a>
+             </li>
+             <li class="nav-item">
+             <a class="nav-link" href="{% url 'galeria'%}">Galeria</a>
+             </li>
+             <li class="nav-item">
+             <a class="nav-link" href="{% url 'contatos_oficiais'%}">Contatos</a>
+             </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+   {% block content%}
+
+  {%endblock%}
+ <!-- Rodapé -->
+    <footer class="bg-light">
+      <div class="container ">
+        <div class="row">
+          <div class="col-md-4">
+           <p class="text-muted p_1" align="center">Seja UFSM - Frederico Westphalen</p>
+            <p class="text-muted p_1" align="center">E-mail: sejaufsm@gmail.com</p>
+            <p class="text-muted p_1" align="center">Facebook: <a href="https://www.facebook.com/sejaufsmfw/"  target="_blank">www.facebook.com/sejaufsmfw</a></p>
+          </div>
+          <div class="col-md-4">
+          </div>
+          <div class="col-md-3">
+            <p class="text-muted p_1" align="center"> UFSM-FW - Frederico Westphalen</p>
+            <p class="text-muted p_1" align="center">Telefone: (55) 3744-0600 </p>
+             <p class="text-muted p_1" align="center">Site: <a href="http://w3.ufsm.br/frederico/"  target="_blank">w3.ufsm.br/frederico</a></p>
+          </div>
+          <div class="col-sm-1">
+         <a href="/admin/logout/">
+          <i class="fa fa-user fa-4x" aria-hidden="true"></i>
+          </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src=" {% static 'b/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'b/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'b/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="{% static 'js/jqBootstrapValidation.js' %}"> </script>
+    <script src="{% static 'js/contact_me.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'b/js/agency.min.js' %}"></script>
+
+  </body>
+
+</html>

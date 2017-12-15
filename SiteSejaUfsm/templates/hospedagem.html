@@ -1,0 +1,32 @@
+{% extends "template_seja.html"%}
+{% load staticfiles%}
+
+{% block content%}
+
+ <section id="team">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Onde se hospedar?</h2>
+          </div>
+        </div>
+        <br><br>
+        <div class="row text-center"> 
+        {% for hospedagem in hospedagem %}
+          <div class="col-md-6 team-member">
+            <h4>{{hospedagem.Nome}}</h4>
+            <br>
+              <p class="text-muted p_1">Endereço: {{hospedagem.Endereco}}</p>
+              <p class="text-muted p_1">Telefone: {{hospedagem.Telefone}}</p>
+              <p class="text-muted p_1">Site: {{hospedagem.Site}}</p>
+          </div>
+
+           {% endfor %}
+        </div>  
+      </div>
+       <br><br>
+    </section>
+
+{% endblock %}
+
+

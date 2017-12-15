@@ -1,0 +1,51 @@
+{% extends "template_seja.html"%}
+{% load staticfiles%}
+
+{% block content%}
+<section>
+          <div class="container">
+              <div class="row">
+                  {%for noticias in noticias %}
+                    <div class="col-lg-12 text-center">
+                    <h2 class="section-heading text-uppercase">{{noticias.Titulo}}</h2>
+                    </div>
+            
+                    <div class="col-lg-12 corpo" >
+                    {{noticias.Texto}}
+                    </div>  
+                     {%endfor%}           
+                </div>
+      <br><br>  
+      <div class="row">
+       
+         {%for imagens in imagens %}
+          <div class=" col-sm-3 portfolio-item" align="center">
+            <img class=" img-thumbnail"  style = " height: 250px; width: 250px;" src="{{imagens.Imagem.url}}" alt="">
+          </div>
+
+          {%endfor%}
+         
+           
+       </div>
+       <div class="pagination">
+                        <span class="step-links">
+                            {% if imagens.has_previous %}
+                                <a href="?page=1">&laquo; Primeira </a>
+                                <a href="?page={{ imagens_.previous_page_number }}">previous</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Pagina {{ imagens_.number }} de {{ imagens_.paginator.num_pages }}.
+                            </span>
+
+                            {% if imagens.has_next %}
+                                <a href="?page={{ imagens_.next_page_number }}">Próxima</a>
+                                <a href="?page={{ imagens_.paginator.num_pages }}">Última &raquo;</a>
+                            {% endif %}
+                        </span>
+            </div>
+</div>
+
+ </section>
+
+{% endblock %}

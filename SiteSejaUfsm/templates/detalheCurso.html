@@ -1,0 +1,154 @@
+{% extends "template_seja.html"%}
+{% load staticfiles%}
+
+{% block content%}
+
+<!-- About -->
+    <section id="about">
+      <div class="container">
+      {% for cursos in cursos %}
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">{{cursos.Nome}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+             <ul class="timeline">
+              <li>
+                <div class="timeline-image">
+                  <img class="rounded-circle img-fluid" src="{{cursos.Logo.url}}">
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <br><br>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted">Vagas: {{cursos.Vagas}} </p>
+                    <p class="text-muted">Duração de: {{cursos.Duracao}} semestres</p>
+                    <p class="text-muted">Turno: {{cursos.Turno}} </p>
+                  </div>
+                </div>
+              </li>
+              </ul>
+              </div>
+              </div>
+
+              <div class="row">
+                    <div class="col-lg-6 ">
+                      <div class="timeline-panel text">
+                        <div class="timeline-heading">
+                          <h4>Objetivo do Curso:</h4>
+                        </div>
+                        <div class="timeline-body">
+                          <p class="text-muted"> {{cursos.Objetivo}}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="timeline-panel text">
+                        <div class="timeline-heading">
+                          <h4>Perfil do Aluno:</h4>
+                        </div>
+                        <div class="timeline-body">
+                          <p class="text-muted">{{cursos.Perfil}}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div  class="timeline-panel text">
+                        <div class="timeline-heading">
+                          <h4>Atuação do Profissional:</h4>
+                        </div>
+                        <div class="timeline-body">
+                          <p class="text-muted">{{cursos.Atuacao}}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="timeline-panel ">
+                        <div class="timeline-heading">
+                          <h4>Coordenação:</h4>
+                        </div>
+                        <div class="timeline-body">
+                          <p class="text-muted">Coordenador(a):{{cursos.Coordenador}}</p>
+                          <p class="text-muted">Telefone:{{cursos.Telefone}}</p>
+                          <p class="text-muted">E-mail:{{cursos.Email}}</p>
+                          <p class="text-muted"> <a></a></p>
+                        </div>
+                      </div>
+                      <div class="timeline-panel ">
+                        <div class="timeline-heading">
+                          <h4>Grade Curricular:</h4>  <p><a href="{{cursos.Grade}}" target="_blank">Acesse aqui</a> </p>
+                        </div>
+                        <div class="timeline-body">
+                         
+                        </div>
+                      </div>
+       </div>
+         <div class="col-lg-6"  style="margin-top: 100px;">
+            {%for noticias in noticias %}
+               <div class="row institucional" >
+                  <div class="col-sm-5">
+                     {{noticias.Data}}
+                  </div> 
+                  <div class="col-sm-6" style="margin-left:30px;">
+                  <a href="{% url 'DetalhesNoticias' id=noticias.id %}"> {{noticias.Titulo}} </a> 
+                  </div>      
+               </div>
+           {%endfor%}
+           <div class="pagination">
+                        <span class="step-links" style=": center">
+                            {% if noticias.has_previous %}
+                                <a href="?page=1">&laquo; Primeira</a>
+                                <a href="?page={{noticias.previous_page_number }}">Anterior</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Pagina {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+                            </span>
+
+                            {% if noticias.has_next %}
+                                <a href="?page={{ noticias.next_page_number }}">Próxima</a>
+                                <a href="?page={{ noticias.paginator.num_pages }}">Última &raquo;</a>
+                            {% endif %}
+                        </span>
+</div>
+          </div> 
+
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Galeria de Imagens</h2>
+          </div>
+        </div>
+        <div class="row">
+         {%for imagem in imagem %}
+          <div class=" col-sm-3 portfolio-item" align="center">
+            <img class=" img-thumbnail"  style = " height: 250px; width: 250px;" src="{{imagem.Imagem.url}}" alt="">
+          </div>
+          {%endfor%}
+          </div>
+          <div class="pagination">
+                        <span class="step-links" style=": center">
+                            {% if imagem.has_previous %}
+                                <a href="?page=1">&laquo; Primeira</a>
+                                <a href="?page={{ imagem.previous_page_number }}">Anterior</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Pagina {{ imagem.number }} de {{ imagem.paginator.num_pages }}.
+                            </span>
+
+                            {% if imagem.has_next %}
+                                <a href="?page={{ imagem.next_page_number }}">Próxima</a>
+                                <a href="?page={{ imagem.paginator.num_pages }}">Última &raquo;</a>
+                            {% endif %}
+                        </span>
+</div>
+          </div>
+    </section>
+    
+ {%endfor%}
+
+{% endblock %}

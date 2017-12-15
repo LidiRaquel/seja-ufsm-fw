@@ -1,0 +1,4 @@
+*.pyc
+/seja
+/mysite/settings.py
+/media

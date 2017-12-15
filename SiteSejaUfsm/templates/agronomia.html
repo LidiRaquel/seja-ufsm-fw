@@ -1,0 +1,123 @@
+{% extends "template_seja.html"%}
+{% load staticfiles%}
+
+{% block content%}
+
+<!-- About -->
+    <section id="about">
+      <div class="container">
+      {% for cursos in cursos %}
+     {% ifequal cursos.tipo "agronomia" %}
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">{{cursos.nome}}</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12">
+             <ul class="timeline">
+              <li>
+                <div class="timeline-image">
+                  <img class="rounded-circle img-fluid" src="{% static 'b/img/logos/Agronomia.png '%}" alt=" Logo do Curso de Agronomia">
+                </div>
+                <div class="timeline-panel">
+                  <div class="timeline-heading">
+                    <br><br>
+                  </div>
+                  <div class="timeline-body">
+                    <p class="text-muted">Vagas: {{cursos.vagas}} </p>
+                    <p class="text-muted">Duração de: {{cursos.duracao}} semestres</p>
+                    <p class="text-muted">Turno: {{cursos.turno}} </p>
+                  </div>
+                </div>
+              </li>
+              </ul>
+              </div>
+              </div>
+
+              <div class="row">
+                    <div class="col-lg-6 ">
+                      <div class="timeline-panel text">
+                        <div class="timeline-heading">
+                          <h4>Objetivo do Curso:</h4>
+                        </div>
+                        <div class="timeline-body">
+                          <p class="text-muted"> {{cursos.objetivo}}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="timeline-panel text">
+                        <div class="timeline-heading">
+                          <h4>Perfil do Aluno:</h4>
+                        </div>
+                        <div class="timeline-body">
+                          <p class="text-muted">{{cursos.perfil}}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div  class="timeline-panel text">
+                        <div class="timeline-heading">
+                          <h4>Atuação do Profissional:</h4>
+                        </div>
+                        <div class="timeline-body">
+                          <p class="text-muted">{{cursos.atuacao}}</p>
+                        </div>
+                      </div>
+                      <br>
+                      <div class="timeline-panel ">
+                        <div class="timeline-heading">
+                          <h4>Coordenação:</h4>
+                        </div>
+                        <div class="timeline-body">
+                          <p class="text-muted">Coordenador(a):{{cursos.coordenador}}</p>
+                          <p class="text-muted">Telefone:{{cursos.telefone}}</p>
+                          <p class="text-muted">E-mail:{{cursos.email}}</p>
+                          <p class="text-muted"> <a></a></p>
+                        </div>
+                      </div>
+                      <div class="timeline-panel ">
+                        <div class="timeline-heading">
+                          <h4>Grade Curricular:</h4>
+                        </div>
+                        <div class="timeline-body">
+                          <p class="text-muted"> <a href="http://w3.ufsm.br/frederico/index.php/curso/graduacao?layout=edit&id=92" target="_blank"> Acesse aqui</a></p>
+                        </div>
+                      </div>
+       </div>
+         <div class="col-lg-6"  style="margin-top: 100px;">
+            {%for noticias in noticias %}
+               <div class="row institucional" >
+                  <div class="col-sm-2">
+                     {{noticias.Data}}
+                  </div> 
+                  <div class="col-sm-6" style="margin-left:30px;">
+                  <a href="{% url 'DetalhesNoticias' id=noticias.id %}"> {{noticias.Titulo}} </a> 
+                  </div>      
+               </div>
+           {%endfor%}
+          </div> 
+
+      </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Galeria de Imagens</h2>
+          </div>
+        </div>
+        <div class="row">
+         {%for imagem in imagem %}
+          <div class=" col-sm-3 portfolio-item" align="center">
+            <img class=" img-thumbnail"  style = " height: 250px; width: 250px;" src="{{imagem.Original.url}}" alt="">
+          </div>
+          {%endfor%}
+          </div>
+          </div>
+
+ {% endifequal %}
+    </section>
+    
+ {%endfor%}
+
+{% endblock %}

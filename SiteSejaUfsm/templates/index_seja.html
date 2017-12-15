@@ -1,0 +1,180 @@
+{% extends "template_seja.html"%}
+{%load staticfiles%}
+{% block content%}
+
+<!-- Menu alternativo da pagina-->
+<section  id="team">
+      <div class="container">
+
+      <div class="row">
+       <div class="col-sm-3 text-center">
+        {%for cursos in cursos%}
+       <div class="team-member">
+       <a href="{%url 'DetalheCursos' id=cursos.id %}"> <img class="mx-auto img-thumbnail" src=" {{cursos.Logo.url}}"></a>
+       </div>
+       {%endfor%}
+       </div>
+  
+      <!-- Linha que delimita o centro da pagina 
+        <div class="row">
+            <!-- Colunas que delimitam os cursos
+              <div class="col-sm-3 text-center">
+            <div class="team-member">
+             <a href="{% url 'agronomia' %}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/agronomia.png' %}" alt=""></a>
+          
+            </div>
+          
+            <div class="team-member">
+             <a href="{% url 'engenharia_ambiental' %}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/engenharia.png' %}" alt=""></a>
+         
+            </div>
+        
+            <div class="team-member">
+             <a href="{% url 'engenharia_florestal' %}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/engf.png' %}" alt=""></a>
+              
+            </div>
+         
+            <div class="team-member">
+             <a href="{% url 'jornalismo' %}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/aspas.png' %}" alt=""></a>
+            
+            </div>
+        
+            <div class="team-member">
+             <a href="{% url 'relacoes_publicas'%}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/rp1.png' %}" alt=""></a>
+             
+            </div>
+          
+            <div class="team-member">
+             <a href="{% url 'sistemas_informacao'%}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/si1.png' %}" alt=""></a>
+             
+            </div>
+    </div>-->
+
+
+               <!-- Inicio do centro da pagina, noticias institucuionais--> 
+          
+                   <div class="col-sm-6" >
+                   <br><br>
+                          <div class="col-lg-12 text-center">
+                            <h2 class="section-heading text-uppercase">Institucionais</h2>
+                        </div>
+                        {%for noticias in noticias %}
+                           <div class="row institucional" >
+                              <div class="col-sm-5">
+                                 {{noticias.Data}}
+                              </div> 
+                              <div class="col-sm-6" style="margin-left:30px;">
+                              <a href="{% url 'DetalhesNoticias' id=noticias.id %}"> {{noticias.Titulo}} </a> 
+                              </div>      
+                           </div>
+                       {%endfor%}
+                       <div class="pagination">
+                        <span class="step-links" style=": center">
+                            {% if noticias.has_previous %}
+                                <a href="?page=1">&laquo; Primeira</a>
+                                <a href="?page={{ noticias.previous_page_number }}">Anterior</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Pagina {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+                            </span>
+
+                            {% if noticias.has_next %}
+                                <a href="?page={{ noticias.next_page_number }}">Próxima</a>
+                                <a href="?page={{ noticias.paginator.num_pages }}">Última &raquo;</a>
+                            {% endif %}
+                        </span>
+</div>
+          </div> 
+    
+    
+              
+       
+       <!-- Titulo da coluna que delimita o menu utilidades --> 
+            <div class=" col-sm-3  text-center">
+                       <!-- <div class="col-lg-3 text-center">
+                          <h2 class="section-heading ">Utilidades </h2>
+                         </div>-->
+                         <div  style="margin-bottom: 50px;">
+                              <a href="{% url 'alimentacao'%}">
+                                  <span class="fa-stack fa-4x">
+                                    <i class="fa fa_1 fa-cutlery fa-stack-1x fa-inverse "></i>
+                                  </span> 
+                              <br>
+                          </div>
+                    <div  style="margin-bottom: 50px;">
+                    <a href="{% url 'hospedagem'%}">
+                    <span class="fa-stack fa-4x">
+                    <i class="fa  fa_2 fa-hospital-o  fa-stack-1x fa-stack-1x fa-inverse "></i>
+                  </span>
+                    </a>
+                  </div>
+                  <div  style="margin-bottom: 50px;">
+                    <a href="{% url 'moradia'%}">
+                      <span class="fa-stack fa-4x">
+                    <i class="fa fa-home fa-stack-1x  fa_3 fa-stack-1x fa-inverse "></i>
+                  </span>
+                    </a>
+                    </div>
+                  <div  style="margin-bottom: 50px;">
+                    <a href="{% url 'contatos'%}">
+                      <span class="fa-stack fa-4x">
+                    <i class="fa fa-phone fa_4 fa-stack-1x fa-inverse "></i>
+                  </span>
+                  </a>
+                  </div>
+                    
+                  <div  style="margin-bottom: 50px;">
+                    <a href="{% url 'horario'%}">
+                    <span class="fa-stack fa-4x">
+                    <i class="fa fa-bus  fa_5 fa-stack-1x fa-inverse "></i>
+                  </span>
+                    </a>
+              </div>
+                  
+                  <div  style="margin-bottom: 50px;">
+                    <a href="{% url 'assistencia'%}">
+                    <span class="fa-stack fa-4x">
+                    <i class="fa fa-handshake-o fa_6  fa-stack-1x fa-inverse "></i>
+                  </span>
+                    </a>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div> 
+     
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Seja UFSM-FW</h2>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-md-4"">
+            <span class="fa-stack fa-4x">
+              <i class="fa fa  fa_6 fa-users fa-stack-1x fa-inverse "></i>
+            </span>
+            <h4 class="service-heading">Quem Somos?</h4>
+            <p class="text-muted">Projeto desenvolvido para divulgar os cursos e a comunidade acadêmica que faz parte da UFSM campus Frederico Westphalen.</p>
+          </div>
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+              <i class="fa fa-refresh fa_3 fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="service-heading">Objetivo:</h4>
+            <p class="text-muted">Divulgar os cursos, as atividades e o involvimento da UFSM em Frederico Westphalen, para todos os interressados.</p>
+          </div>
+          <div class="col-md-4">
+            <span class="fa-stack fa-4x">
+              <i class="fa  fa_4 fa-weixin fa-stack-1x fa-inverse"></i>
+            </span>
+            <h4 class="service-heading">Contatos:</h4>
+            <p class="text-muted">Facebook: <a href="https://www.facebook.com/sejaufsmfw/"  target="_blank">www.facebook.com/sejaufsmfw</a></p></p>
+            <p class="text-muted">E-mail: sejaufsm@gmail.com </p>
+             <p class="text-muted" align="center">Telefone: (55) 3744-0600 </p>
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
