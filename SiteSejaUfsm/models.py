@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 from django.db import models
 import datetime
@@ -88,7 +89,7 @@ class Contato_Administrativo(models.Model):
 		return self.Nome
 
 class Video(models.Model):
-	Nome: models.CharField(max_length=100,blank=True)
+	Nome = models.CharField(max_length=100,blank=True)
 	URL = models.URLField(max_length=300, blank=True)
 	def __str__(self):
 		return self.Nome
