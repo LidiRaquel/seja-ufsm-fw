@@ -35,12 +35,12 @@ text-align: justify;
 
 @font-face {
      font-family: seja;
-     src: url('css/font/MILKSHAKE .OTF');
+     src: url('font/MILKSHAKE .OTF');
 }
 
 @font-face {
      font-family: seja_;
-     src: url('css/font/MYRIADPRO-COND.OTF');
+     src: url('font/MYRIADPRO-COND.OTF');
 }
 
 h1,
