@@ -30,7 +30,7 @@ def index(request):
 
 def DetalheCursos(request,id):
 	cursos = Curso.objects.all()
-	curso = Curso.objects.all().filter(id= id)
+	curso = Curso.objects.all().filter(id=id)
 	imagem = Imagen.objects.all().filter(idcurso=id).order_by('-id')
 	noticias = Noticia.objects.all().filter(idcurso=id).order_by('-id')
 	videos = Video.objects.all().filter(idcurso=id).order_by('-id')
