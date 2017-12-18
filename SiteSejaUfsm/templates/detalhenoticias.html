@@ -27,20 +27,20 @@
          
            
        </div>
-       <div class="pagination">
-                        <span class="step-links">
+        <div class="pagination">
+                        <span class="step-links" style=": center">
                             {% if imagens.has_previous %}
-                                <a href="?page=1">&laquo; Primeira </a>
-                                <a href="?page={{ imagens_.previous_page_number }}">previous</a>
+                                <a href="?page=1">&laquo; Primeira</a>
+                                <a href="?page={{ imagens.previous_page_number }}">Anterior</a>
                             {% endif %}
 
                             <span class="current">
-                                Pagina {{ imagens_.number }} de {{ imagens_.paginator.num_pages }}.
+                                Pagina {{ imagens.number }} de {{ imagens.paginator.num_pages }}.
                             </span>
 
                             {% if imagens.has_next %}
-                                <a href="?page={{ imagens_.next_page_number }}">Próxima</a>
-                                <a href="?page={{ imagens_.paginator.num_pages }}">Última &raquo;</a>
+                                <a href="?page={{ imagens.next_page_number }}">Próxima</a>
+                                <a href="?page={{ imagens.paginator.num_pages }}">Última &raquo;</a>
                             {% endif %}
                         </span>
             </div>

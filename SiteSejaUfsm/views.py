@@ -29,12 +29,15 @@ def index(request):
 	return render(request,'index_seja.html',{'cursos':cursos,'noticias':noticias,'page': page})
 
 def DetalheCursos(request,id):
-	curso = Curso.objects.get(id=id)
-	cursos = Curso.objects.all().filter(id= id)
+	cursos = Curso.objects.all()
+	curso = Curso.objects.all().filter(id= id)
 	imagem = Imagen.objects.all().filter(idcurso=id).order_by('-id')
-	noticias = Noticia.objects.all().filter(idcurso= id).order_by('-id')
+	noticias = Noticia.objects.all().filter(idcurso=id).order_by('-id')
+	videos = Video.objects.all().filter(idcurso=id).order_by('-id')
+
 	paginator_ = Paginator(noticias,6)
 	paginator = Paginator(imagem,4)
+	paginator1 = Paginator(videos,3)
 	page = request.GET.get('page')
 	try:
 		imagem = paginator.page(page)
@@ -50,7 +53,14 @@ def DetalheCursos(request,id):
 	except EmptyPage:
 		noticias = pagi.page(paginator_.num_pages)
 
-	return render(request,'detalheCurso.html',{'curso':curso,'cursos':cursos,'imagem':imagem,'noticias':noticias,'page':page})
+	try:
+		videos = paginator1.page(page)
+	except PageNotAnInteger:
+		videos = paginator1.page(1)
+	except EmptyPage:
+		videos = paginator1.page(paginator.num_pages)
+
+	return render(request,'detalheCurso.html',{'cursos':cursos,'curso':curso,'imagem':imagem,'noticias':noticias,'videos':videos,'page':page})
 
 def DetalhesNoticias(request,id):
 	cursos = Curso.objects.all()
@@ -132,6 +142,8 @@ def galeria(request):
 	imagem= Imagen.objects.all().order_by("-id")
 	videos = Video.objects.all().order_by("-id")
 	paginator = Paginator(imagem,8)
+	paginator_ = Paginator(videos,3)
+
 	page = request.GET.get('page')
 	try:
 		imagem = paginator.page(page)
@@ -139,7 +151,15 @@ def galeria(request):
 		imagem = paginator.page(1)
 	except EmptyPage:
 		imagem = paginator.page(paginator.num_pages)
-	return render(request,'galeria.html',{'imagem':imagem,'page':page,'videos':videos,'cursos':cursos})
+
+	try: 
+		videos = paginator_.page(page)
+	except PageNotAnInteger:
+		videos = paginator_.page(1)
+	except EmptyPage:
+		videos = pagi.page(paginator_.num_pages)
+
+	return render(request,'galeria.html',{'imagem':imagem,'videos':videos,'cursos':cursos,'page':page,})
 
 
 def edital(request):
@@ -153,6 +173,8 @@ def edital(request):
 		arquivos = paginator.page(1)
 	except EmptyPage:
 		arquivos = paginator.page(paginator.num_pages)
+
+
 
 	return render (request,'arquivos.html',{'arquivos':arquivos,'page':page,'cursos':cursos})
 

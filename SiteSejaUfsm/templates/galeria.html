@@ -13,45 +13,66 @@
          {%for imagem in imagem %}
           <div class=" col-sm-3 portfolio-item" align="center">
             <img class=" img-thumbnail"  style = " height: 250px; width: 250px;" src="{{imagem.Imagem.url}}" alt="">
+            <br><br>
           </div>
           {%endfor%}
           </div>
           <div class="pagination">
-                        <span class="step-links">
+                        <span class="step-links" style=": center">
                             {% if imagem.has_previous %}
-                                <a href="?page=1">&laquo; Primeira </a>
-                                <a href="?page={{ imagem_.previous_page_number }}">previous</a>
+                                <a href="?page=1">&laquo; Primeira</a>
+                                <a href="?page={{ imagem.previous_page_number }}">Anterior</a>
                             {% endif %}
 
                             <span class="current">
-                                Pagina {{ imagem_.number }} de {{ imagem_.paginator.num_pages }}.
+                                Pagina {{ imagem.number }} de {{ imagem.paginator.num_pages }}.
                             </span>
 
                             {% if imagem.has_next %}
-                                <a href="?page={{ imagem_.next_page_number }}">Próxima</a>
-                                <a href="?page={{ imagem_.paginator.num_pages }}">Última &raquo;</a>
+                                <a href="?page={{ imagem.next_page_number }}">Próxima</a>
+                                <a href="?page={{ imagem.paginator.num_pages }}">Última &raquo;</a>
+                            {% endif %}
+                        </span>
+            </div>
+
+
+
+    <div class="row">
+          <div class="col-lg-12 text-center">
+            <h2 class="section-heading text-uppercase">Vídeos</h2>
+          </div>
+        </div>
+        <div class="row"><br>
+         {%for video in videos %}
+          <div class=" col-sm-3" align="center">
+          <iframe width="250" height="250" src="https://www.youtube.com/embed/{{ video.URL }}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe><br><br>
+          </div>
+          <div>
+          <br><br>
+          </div>
+          
+          {%endfor%}
+          </div>
+                    <div class="pagination">
+                        <span class="step-links" style=": center">
+                            {% if videos.has_previous %}
+                                <a href="?page=1">&laquo; Primeira</a>
+                                <a href="?page={{ videos.previous_page_number }}">Anterior</a>
+                            {% endif %}
+
+                            <span class="current">
+                                Pagina {{ videos.number }} de {{ videos.paginator.num_pages }}.
+                            </span>
+
+                            {% if videos.has_next %}
+                                <a href="?page={{ videos.next_page_number }}">Próxima</a>
+                                <a href="?page={{ videos.paginator.num_pages }}">Última &raquo;</a>
                             {% endif %}
                         </span>
             </div>
           </div>
 
-        <div class="container">
-        <div class="row">
-          <div class="col-lg-12 text-center">
-            <h2 class="section-heading text-uppercase">Vídeos:</h2>
-          </div>
-        </div>
-        <div class="row">
-         {%for videos in videos %}
-          <div class=" col-sm-3 portfolio-item" align="center">
-          <a href="{{videos.URL}}" target="_blank"><video width="320" height="240" controls>
-                <source type="video/mp4" src="{{videos.UR}}">
-                </video></a>
-          </div>
-          {%endfor%}
-          </div>
-          </div>
-
+        
  </section>
 
 {% endblock %}

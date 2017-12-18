@@ -28,7 +28,7 @@ class Alimentacao (models.Model):
 	def __str__(self):
 		return self.Nome
 
-class Hotei (models.Model):
+class Hotei(models.Model):
 	"""docstring for Hospedagem """
 	Nome = models.CharField(max_length =100,blank=True)
 	Endereco = models.CharField(max_length =100,blank=True,verbose_name='Endereço')
@@ -89,7 +89,8 @@ class Contato_Administrativo(models.Model):
 		return self.Nome
 
 class Video(models.Model):
+	idcurso = models.ForeignKey('Curso',on_delete=models.CASCADE,blank=True,null=True,verbose_name='Curso')
 	Nome = models.CharField(max_length=100,blank=True)
-	URL = models.URLField(max_length=300, blank=True)
+	URL = models.CharField(max_length=300, blank=True,verbose_name='Vídeo')
 	def __str__(self):
 		return self.Nome
