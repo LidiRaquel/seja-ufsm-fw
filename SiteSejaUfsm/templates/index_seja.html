@@ -2,6 +2,13 @@
 {%load staticfiles%}
 {% block content%}
 
+<header class="masthead" id="teste">
+      <div class="container">
+        <div class="intro-text">
+          <div class="intro-heading text-uppercase">Bem-Vindo!</div>
+        </div>
+      </div>
+    </header>
 <!-- Menu alternativo da pagina-->
 <section  id="team">
       <div class="container">
@@ -56,7 +63,7 @@
                    <div class="col-sm-6" >
                    <br><br>
                           <div class="col-lg-12 text-center">
-                            <h2 class="section-heading text-uppercase">Institucionais</h2>
+                            <h2 class="section-heading text-uppercase">Notícias</h2>
                         </div>
                         {%for noticias in noticias %}
                            <div class="row institucional" >
@@ -156,14 +163,14 @@
               <i class="fa fa  fa_6 fa-users fa-stack-1x fa-inverse "></i>
             </span>
             <h4 class="service-heading">Quem Somos?</h4>
-            <p class="text-muted">Projeto desenvolvido para divulgar os cursos e a comunidade acadêmica que faz parte da UFSM campus Frederico Westphalen.</p>
+            <p class="text-muted">Projeto de extensão desenvolvido para divulgar os cursos de graduação da UFSM-FW.</p>
           </div>
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
               <i class="fa fa-refresh fa_3 fa-stack-1x fa-inverse"></i>
             </span>
             <h4 class="service-heading">Objetivo:</h4>
-            <p class="text-muted">Divulgar os cursos, as atividades e o involvimento da UFSM em Frederico Westphalen, para todos os interressados.</p>
+            <p class="text-muted">Divulgar os cursos para a redução das vagas ociosas presentes nos cursos do campus.</p>
           </div>
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
@@ -177,4 +184,5 @@
         </div>
       </div>
     </section>
+    
 {% endblock %}

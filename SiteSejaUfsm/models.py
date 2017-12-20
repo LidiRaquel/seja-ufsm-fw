@@ -3,7 +3,7 @@
 from django.db import models
 import datetime
 
-class Curso (models.Model):
+class Curso(models.Model):
 	Logo = models.ImageField(upload_to='logos', blank=True,null=True)
 	Nome = models.CharField(max_length =100, blank=True)
 	Vagas = models.CharField(max_length =100, blank=True)
@@ -81,7 +81,6 @@ class Edital(models.Model):
 
 class Contato_Administrativo(models.Model):
 	Nome=models.CharField(max_length=100,blank=True)
-	Setor = models.CharField(max_length = 100, blank=True)
 	Telefone = models.CharField(max_length = 100,blank=True)
 	Email = models.CharField(max_length = 100,blank=True)
 	Site =  models.URLField(max_length=300,blank=True)
