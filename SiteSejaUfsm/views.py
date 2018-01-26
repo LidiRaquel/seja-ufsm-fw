@@ -53,7 +53,7 @@ def DetalheCursos(request,id):
 		noticias = paginator_.page(1)
 	except EmptyPage:
 		noticias = paginator_.page(paginator_.num_pages)
-
+		
 	try:
 		videos = paginator1.page(page)
 	except PageNotAnInteger:
