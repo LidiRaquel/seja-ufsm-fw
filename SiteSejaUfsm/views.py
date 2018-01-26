@@ -39,6 +39,7 @@ def DetalheCursos(request,id):
 	paginator = Paginator(imagem,4)
 	paginator1 = Paginator(videos,3)
 	page = request.GET.get('page')
+
 	try:
 		imagem = paginator.page(page)
 	except PageNotAnInteger:
@@ -51,14 +52,14 @@ def DetalheCursos(request,id):
 	except PageNotAnInteger:
 		noticias = paginator_.page(1)
 	except EmptyPage:
-		noticias = pagi.page(paginator_.num_pages)
+		noticias = paginator_.page(paginator_.num_pages)
 
 	try:
 		videos = paginator1.page(page)
 	except PageNotAnInteger:
 		videos = paginator1.page(1)
 	except EmptyPage:
-		videos = paginator1.page(paginator.num_pages)
+		videos = paginator1.page(paginator1.num_pages)
 
 	return render(request,'detalheCurso.html',{'cursos':cursos,'curso':curso,'imagem':imagem,'noticias':noticias,'videos':videos,'page':page})
 
@@ -157,7 +158,7 @@ def galeria(request):
 	except PageNotAnInteger:
 		videos = paginator_.page(1)
 	except EmptyPage:
-		videos = pagi.page(paginator_.num_pages)
+		videos = paginator_.page(paginator_.num_pages)
 
 	return render(request,'galeria.html',{'imagem':imagem,'videos':videos,'cursos':cursos,'page':page,})
 

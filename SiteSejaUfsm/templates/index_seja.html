@@ -11,55 +11,16 @@
     </header>
 <!-- Menu alternativo da pagina-->
 <section  id="team">
-      <div class="container">
-
-      <div class="row">
-       <div class="col-sm-3 text-center">
-        {%for cursos in cursos%}
-       <div class="team-member">
-       <a href="{%url 'DetalheCursos' id=cursos.id %}"> <img class="mx-auto img-thumbnail" src=" {{cursos.Logo.url}}"></a>
-       </div>
-       {%endfor%}
-       </div>
-  
-      <!-- Linha que delimita o centro da pagina 
+    <div class="container">
         <div class="row">
-            <!-- Colunas que delimitam os cursos
-              <div class="col-sm-3 text-center">
-            <div class="team-member">
-             <a href="{% url 'agronomia' %}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/agronomia.png' %}" alt=""></a>
-          
-            </div>
-          
-            <div class="team-member">
-             <a href="{% url 'engenharia_ambiental' %}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/engenharia.png' %}" alt=""></a>
-         
-            </div>
-        
-            <div class="team-member">
-             <a href="{% url 'engenharia_florestal' %}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/engf.png' %}" alt=""></a>
-              
-            </div>
-         
-            <div class="team-member">
-             <a href="{% url 'jornalismo' %}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/aspas.png' %}" alt=""></a>
-            
-            </div>
-        
-            <div class="team-member">
-             <a href="{% url 'relacoes_publicas'%}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/rp1.png' %}" alt=""></a>
-             
-            </div>
-          
-            <div class="team-member">
-             <a href="{% url 'sistemas_informacao'%}"> <img class="mx-auto img-thumbnail" src="{% static 'b/img/logos/si1.png' %}" alt=""></a>
-             
-            </div>
-    </div>-->
-
-
-               <!-- Inicio do centro da pagina, noticias institucuionais--> 
-          
+                   <div class="col-sm-3 text-center">
+                    {%for cursos in cursos%}
+                   <div class="team-member" id="hover" >
+                        <a href="{%url 'DetalheCursos' id=cursos.id %}" data-toggle="tooltip" data-placement="bottom" title="{{cursos.Nome}}"> <img class="mx-auto img-thumbnail" src=" {{cursos.Logo.url}}"></a>
+                   </div>
+                   {%endfor%}
+                   </div>
+               <!-- Inicio do centro da pagina, noticias institucuionais-->
                    <div class="col-sm-6" >
                    <br><br>
                           <div class="col-lg-12 text-center">
@@ -91,18 +52,15 @@
                                 <a href="?page={{ noticias.paginator.num_pages }}">Última &raquo;</a>
                             {% endif %}
                         </span>
-</div>
-          </div> 
-    
-    
-              
+                      </div>
+                  </div> 
        
        <!-- Titulo da coluna que delimita o menu utilidades --> 
-            <div class=" col-sm-3  text-center">
+            <div class=" col-sm-3  text-center team-member">
                        <!-- <div class="col-lg-3 text-center">
                           <h2 class="section-heading ">Utilidades </h2>
                          </div>-->
-                         <div  style="margin-bottom: 50px;">
+                         <div   style="margin-bottom: 50px;">
                               <a href="{% url 'alimentacao'%}">
                                   <span class="fa-stack fa-4x">
                                     <i class="fa fa_1 fa-cutlery fa-stack-1x fa-inverse "></i>
@@ -184,5 +142,7 @@
         </div>
       </div>
     </section>
-    
+    <script type="text/javascript">
+      $('[data-toggle="tooltip"]').tooltip();
+    </script>
 {% endblock %}

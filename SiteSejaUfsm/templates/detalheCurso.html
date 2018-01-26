@@ -84,35 +84,35 @@
                       </div>
                     
        </div>
-         <div class="col-lg-6"  style="margin-top: 100px;">
-            {%for noticias in noticias %}
-               <div class="row institucional" >
-                  <div class="col-sm-5">
-                     {{noticias.Data}}
-                  </div> 
-                  <div class="col-sm-6" style="margin-left:30px;">
-                  <a href="{% url 'DetalhesNoticias' id=noticias.id %}"> {{noticias.Titulo}} </a> 
-                  </div>      
-               </div>
-           {%endfor%}
-           <div class="pagination">
-                        <span class="step-links" style=": center">
-                            {% if noticias.has_previous %}
-                                <a href="?page=1">&laquo; Primeira</a>
-                                <a href="?page={{noticias.previous_page_number }}">Anterior</a>
-                            {% endif %}
+             <div class="col-lg-6"  style="margin-top: 100px;">
+                {%for noticias in noticias %}
+                   <div class="row institucional" >
+                      <div class="col-sm-5">
+                         {{noticias.Data}}
+                      </div> 
+                      <div class="col-sm-6" style="margin-left:30px;">
+                      <a href="{% url 'DetalhesNoticias' id=noticias.id %}"> {{noticias.Titulo}} </a> 
+                      </div>      
+                   </div>
+               {%endfor%}
+               <div class="pagination container" >
+                            <span class="step-links" style=": center">
+                                {% if noticias.has_previous %}
+                                    <a href="?page=1">&laquo; Primeira</a>
+                                    <a href="?page={{noticias.previous_page_number }}">Anterior</a>
+                                {% endif %}
 
-                            <span class="current">
-                                Pagina {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+                                <span class="current">
+                                    Pagina {{ noticias.number }} de {{ noticias.paginator.num_pages }}.
+                                </span>
+
+                                {% if noticias.has_next %}
+                                    <a href="?page={{ noticias.next_page_number }}">Próxima</a>
+                                    <a href="?page={{ noticias.paginator.num_pages }}">Última &raquo;</a>
+                                {% endif %}
                             </span>
-
-                            {% if noticias.has_next %}
-                                <a href="?page={{ noticias.next_page_number }}">Próxima</a>
-                                <a href="?page={{ noticias.paginator.num_pages }}">Última &raquo;</a>
-                            {% endif %}
-                        </span>
-</div>
-          </div> 
+                </div>
+              </div> 
 
       </div>
     </div>
@@ -126,7 +126,7 @@
         <div class="row">
          {%for imagem in imagem %}
           <div class=" col-sm-3 portfolio-item" align="center">
-            <img class=" img-thumbnail"  style = " height: 250px; width: 250px;" src="{{imagem.Imagem.url}}" alt=""><br><br>
+             <a href="{{imagem.Imagem.url}}" style = " height: auto; width: auto;" ><img class=" img-thumbnail"  style = " height: 250px; width: 250px;" src="{{imagem.Imagem.url}}" alt=""><br><br> </a>
           </div>
           {%endfor%}
           </div>

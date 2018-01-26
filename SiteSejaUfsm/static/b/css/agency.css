@@ -63,6 +63,14 @@ h6 {
   border-bottom-color: #63B8FF;
 }
 
+#mostrar{
+  display: none;
+}
+
+#passar_mouse:hover #mostrar{
+  display:block;
+  }
+  
 .fa_1{
   background-color: #1E90FF;
 }

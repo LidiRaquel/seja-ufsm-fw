@@ -12,9 +12,10 @@
         <div class="row">
          {%for imagem in imagem %}
           <div class=" col-sm-3 portfolio-item" align="center">
-            <img class=" img-thumbnail"  style = " height: 250px; width: 250px;" src="{{imagem.Imagem.url}}" alt="">
-            <br><br>
-          </div>
+            <a href="{{imagem.Imagem.url}}" style = " height: auto; width: auto;" ><img class=" img-thumbnail"  style = " height: 250px; width: 250px;" src="{{imagem.Imagem.url}}" alt="">
+            <br><br><a>
+
+           
           {%endfor%}
           </div>
           <div class="pagination">
